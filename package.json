@@ -1,0 +1,40 @@
+{
+  "name": "node-ga",
+  "preferGlobal": "true",
+  "version": "0.0.1",
+  "author": "Charles Phillips <charles@doublerebel.com>",
+  "description": "Node.js implementation of Google Analytics server-side/mobile API",
+  "contributors": [ 
+    {
+      "name": "Charles Phillips",
+      "email": "charles@doublerebel.com"
+    } 
+  ],
+  "scripts": {
+  },
+  "main": "./lib/node-ga",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doublerebel/node-ga.git"
+  },
+  "keywords": [
+    "analytics",
+    "google",
+    "server",
+    "mobile"
+  ],
+  "dependencies" : {
+    "cookies"   :  "0.3.x",
+    "node-uuid" :  "1.3.x",
+    "express"   :  "2.x.x"
+  },
+  "noAnalyze": false,
+  "devDependencies": {
+  },
+  "bundleDependencies": [
+  ],
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.4"
+  }
+}
