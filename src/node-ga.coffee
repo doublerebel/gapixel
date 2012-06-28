@@ -17,13 +17,13 @@ UTM_GIF_LOCATION = "www.google-analytics.com/__utm.gif"
 
 # 1x1 transparent GIF
 GIF_DATA = [
-  0x47, 0x49, 0x46, 0x38, 0x39, 0x61,
-  0x01, 0x00, 0x01, 0x00, 0x80, 0xff,
-  0x00, 0xff, 0xff, 0xff, 0x00, 0x00,
-  0x00, 0x2c, 0x00, 0x00, 0x00, 0x00,
-  0x01, 0x00, 0x01, 0x00, 0x00, 0x02,
-  0x02, 0x44, 0x01, 0x00, 0x3b
-].map String.fromCharCode
+  '\x47', '\x49', '\x46', '\x38', '\x39', '\x61',
+  '\x01', '\x00', '\x01', '\x00', '\x80', '\xff',
+  '\x00', '\xff', '\xff', '\xff', '\x00', '\x00',
+  '\x00', '\x2c', '\x00', '\x00', '\x00', '\x00',
+  '\x01', '\x00', '\x01', '\x00', '\x00', '\x02',
+  '\x02', '\x44', '\x01', '\x00', '\x3b'
+]
 
 
 class NodeGA
@@ -55,8 +55,8 @@ class NodeGA
     @res.header "cache-control", "private, no-cache, no-cache=Set-Cookie, proxy-revalidate"
     @res.header "pragma", "no-cache"
     @res.header "expires", "Wed, 17 Sep 1975 21:32:10 GMT"
-    @res.end GIF_DATA.join()
-
+    @res.end GIF_DATA.join(''), 'binary'
+    
   # Make a tracking @request to Google Analytics from this server.
   # Copies the headers from the original request to the new one.
   # If request containg utmdebug parameter, exceptions encountered
