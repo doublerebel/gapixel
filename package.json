@@ -11,6 +11,7 @@
     } 
   ],
   "scripts": {
+    "start": "node ./lib/server-snippet.js"
   },
   "main": "./lib/node-ga",
   "repository": {
