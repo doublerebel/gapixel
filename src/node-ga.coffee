@@ -17,12 +17,12 @@ UTM_GIF_LOCATION = "www.google-analytics.com/__utm.gif"
 
 # 1x1 transparent GIF
 GIF_DATA = [
-    0x47, 0x49, 0x46, 0x38, 0x39, 0x61,
-    0x01, 0x00, 0x01, 0x00, 0x80, 0xff,
-    0x00, 0xff, 0xff, 0xff, 0x00, 0x00,
-    0x00, 0x2c, 0x00, 0x00, 0x00, 0x00,
-    0x01, 0x00, 0x01, 0x00, 0x00, 0x02,
-    0x02, 0x44, 0x01, 0x00, 0x3b
+  0x47, 0x49, 0x46, 0x38, 0x39, 0x61,
+  0x01, 0x00, 0x01, 0x00, 0x80, 0xff,
+  0x00, 0xff, 0xff, 0xff, 0x00, 0x00,
+  0x00, 0x2c, 0x00, 0x00, 0x00, 0x00,
+  0x01, 0x00, 0x01, 0x00, 0x00, 0x02,
+  0x02, 0x44, 0x01, 0x00, 0x3b
 ].map String.fromCharCode
 
 
@@ -106,20 +106,20 @@ class NodeGA
 
     # Always try and add the cookie to the @response.
     cookies.set COOKIE_NAME, visitorId,
-        expires: new Date(timeStamp + @options.cookiePersistence)
-        path: @options.cookiePath
+      expires: new Date(timeStamp + @options.cookiePersistence)
+      path: @options.cookiePath
 
     # Construct the gif hit url.
     utmUrl = UTM_GIF_LOCATION + "?" +
-        "utmwv=" + VERSION +
-        "&utmn=" + Utils.getRandomNumber() +
-        "&utmhn=" + domainName +
-        "&utmr=" + documentReferer +
-        "&utmp=" + documentPath +
-        "&utmac=" + account +
-        "&utmcc=__utma%3D999+999+999+999+999+1%3B" +
-        "&utmvid=" + visitorId +
-        "&utmip=" + @getIP @req.headers["remote-addr"]
+             "utmwv=" + VERSION +
+             "&utmn=" + Utils.getRandomNumber() +
+             "&utmhn=" + domainName +
+             "&utmr=" + documentReferer +
+             "&utmp=" + documentPath +
+             "&utmac=" + account +
+             "&utmcc=__utma%3D999+999+999+999+999+1%3B" +
+             "&utmvid=" + visitorId +
+             "&utmip=" + @getIP @req.headers["remote-addr"]
 
     @sendRequestToGoogleAnalytics utmUrl
 
@@ -139,7 +139,6 @@ NodeGA.expressServer = (options) ->
   (req, res, next) ->
     req.app.use Cookies.express()
     new NodeGA(req, res, options)
-    # next()
 
 NodeGA.expressClient = ->
   (@req, res, next) =>
