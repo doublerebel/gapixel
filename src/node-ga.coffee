@@ -71,7 +71,6 @@ class NodeGA
         accept_language: @req.headers["accept-language"]
     
     gareq = http.request options
-    console.log 'utmURL: ' + utmUrl
     if @req.query["utmdebug"]
       gareq.on 'error', (e) ->
         console.log('problem with request: ' + e.message)
