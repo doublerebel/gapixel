@@ -64,12 +64,12 @@ class GAPixel
   sendRequestToGoogleAnalytics: (utmUrl) ->
     options =
       host: utmUrl.split('/')[0]
-      path: utmUrl.split('/')[1]
+      path: '/' + utmUrl.split('/')[1]
       method: "GET"
       headers:
         user_agent: @req.headers["user-agent"]
         accept_language: @req.headers["accept-language"]
-    
+
     gareq = http.request options
     if @req.query["utmdebug"]
       gareq.on 'error', (e) ->
@@ -82,7 +82,7 @@ class GAPixel
   # gif byte data to the @response.
   trackPageView: ->
     timeStamp = new Date().getTime()
-    domainName = @req.headers["server-name"] or ""
+    domainName = @req.headers["host"] or ""
 
     # Get the referrer from the utmr parameter, this is the referrer to the
     # page that contains the tracking pixel, not the referrer for tracking
@@ -119,7 +119,7 @@ class GAPixel
              "&utmac=" + account +
              "&utmcc=__utma%3D999+999+999+999+999+1%3B" +
              "&utmvid=" + visitorId +
-             "&utmip=" + @getIP @req.headers["remote-addr"]
+             "&utmip=" + @getIP @req.connection.remoteAddress
 
     @sendRequestToGoogleAnalytics utmUrl
 
