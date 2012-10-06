@@ -144,7 +144,7 @@ GAPixel.expressClient = ->
   (@req, res, next) =>
     next()
     
-GAPixel.googleAnalyticsGetImageUrl = (GA_ACCOUNT = "ACCOUNT ID GOES HERE", GA_PIXEL = "ga.js") ->
+GAPixel.googleAnalyticsGetImageUrl = (GA_ACCOUNT = "ACCOUNT ID GOES HERE", GA_PIXEL = "px.gif") ->
   url = GA_PIXEL + "?" +
         "utmac=" + GA_ACCOUNT +
         "&utmn=" + Utils.getRandomNumber()
