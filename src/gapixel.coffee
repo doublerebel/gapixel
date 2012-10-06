@@ -5,7 +5,7 @@ http = require('http')
 Crypto = require('crypto')
 Cookies = require('cookies')
 UUID = require('node-uuid')
-Utils = require('./node-ga-utils')
+Utils = require('./gapixel-utils')
 
 
 # Tracker version.
@@ -26,7 +26,7 @@ GIF_DATA = [
 ]
 
 
-class NodeGA
+class GAPixel
 
   constructor: (@req, @res, @options) ->
     @trackPageView()
@@ -130,7 +130,7 @@ class NodeGA
     @writeGifData()
 
 
-NodeGA.expressServer = (options) ->
+GAPixel.expressServer = (options) ->
   options = Utils.extend {
     cookiePath: '/' # The path to which the cookie will be available.
     cookiePersistence: 63072000 # Two years in seconds.
@@ -138,13 +138,13 @@ NodeGA.expressServer = (options) ->
 
   (req, res, next) ->
     req.app.use Cookies.express()
-    new NodeGA(req, res, options)
+    new GAPixel(req, res, options)
 
-NodeGA.expressClient = ->
+GAPixel.expressClient = ->
   (@req, res, next) =>
     next()
     
-NodeGA.googleAnalyticsGetImageUrl = (GA_ACCOUNT = "ACCOUNT ID GOES HERE", GA_PIXEL = "ga.js") ->
+GAPixel.googleAnalyticsGetImageUrl = (GA_ACCOUNT = "ACCOUNT ID GOES HERE", GA_PIXEL = "ga.js") ->
   url = GA_PIXEL + "?" +
         "utmac=" + GA_ACCOUNT +
         "&utmn=" + Utils.getRandomNumber()
@@ -158,4 +158,4 @@ NodeGA.googleAnalyticsGetImageUrl = (GA_ACCOUNT = "ACCOUNT ID GOES HERE", GA_PIX
   url += "&guid=ON"
 
 
-module.exports = NodeGA
+module.exports = GAPixel

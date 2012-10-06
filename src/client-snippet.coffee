@@ -1,12 +1,12 @@
 Express = require('express')
-NodeGA = require('./node-ga')
+GAPixel = require('./gapixel')
 
 app = Express.createServer()
 app.use Express.logger format: ':method :url'
-app.use NodeGA.expressClient()
+app.use GAPixel.expressClient()
 
 createGALink = (req, res) ->
-  res.end '<a href="' + NodeGA.googleAnalyticsGetImageUrl() + '">Link to GIF</a>'
+  res.end '<a href="' + GAPixel.googleAnalyticsGetImageUrl() + '">Link to GIF</a>'
 
 app.get '/', createGALink
 

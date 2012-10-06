@@ -1,4 +1,4 @@
-# node-ga
+# GAPixel
 
 A Node.js implementation of [Google Analytics server-side/mobile API](https://developers.google.com/analytics/devguides/collection/other/mobileWebsites).
 

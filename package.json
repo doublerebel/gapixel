@@ -1,5 +1,5 @@
 {
-  "name": "node-ga",
+  "name": "gapixel",
   "preferGlobal": "true",
   "version": "0.0.1",
   "author": "Charles Phillips <charles@doublerebel.com>",
@@ -13,10 +13,10 @@
   "scripts": {
     "start": "node ./lib/server-snippet.js"
   },
-  "main": "./lib/node-ga",
+  "main": "./lib/gapixel",
   "repository": {
     "type": "git",
-    "url": "https://github.com/doublerebel/node-ga.git"
+    "url": "https://github.com/doublerebel/gapixel.git"
   },
   "keywords": [
     "analytics",
