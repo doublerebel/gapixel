@@ -1,7 +1,7 @@
 Express = require 'express'
 GAPixel = require 'gapixel'
 
-app = Express.createServer()
+app = Express()
 app.use Express.logger format: ':method :url'
 app.use GAPixel.expressClient()
 
